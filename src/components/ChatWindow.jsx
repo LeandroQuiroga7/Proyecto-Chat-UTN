@@ -1,11 +1,9 @@
-function ChatWindow() {
+function ChatWindow({ selectedChat }) {
   return (
     <div className="chat-window">
-      <h2>Chat seleccionado</h2>
-      <div className="messages">
-        <p>Hola 👋</p>
-        <p>¿Cómo estás?</p>
-      </div>
+      <h2>
+        {selectedChat ? selectedChat.name : "Seleccioná un chat"}
+      </h2>
     </div>
   );
 }
