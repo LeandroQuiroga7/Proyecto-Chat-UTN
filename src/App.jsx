@@ -4,19 +4,46 @@ import ChatWindow from "./components/ChatWindow";
 import "./App.css";
 
 function App() {
-  const [selectedChat, setSelectedChat] = useState(null);
+  const [chats, setChats] = useState([
+    {
+      id: 1,
+      name: "Chat 1",
+      messages: [{ from: "bot", text: "Hola 👋" }],
+    },
+    {
+      id: 2,
+      name: "Chat 2",
+      messages: [{ from: "bot", text: "¿Cómo estás?" }],
+    },
+  ]);
+
+  const [selectedChatId, setSelectedChatId] = useState(1);
+
+  const selectedChat = chats.find(chat => chat.id === selectedChatId);
+
+  const sendMessage = (text) => {
+    setChats(
+      chats.map(chat =>
+        chat.id === selectedChatId
+          ? {
+              ...chat,
+              messages: [...chat.messages, { from: "user", text }],
+            }
+          : chat
+      )
+    );
+  };
 
   return (
     <div>
       <h1>Chat Clon</h1>
-
       <div className="app">
         <ChatList
-          selectedChat={selectedChat}
-          setSelectedChat={setSelectedChat}
+          chats={chats}
+          selectedChatId={selectedChatId}
+          onSelectChat={setSelectedChatId}
         />
-
-        <ChatWindow selectedChat={selectedChat} />
+        <ChatWindow chat={selectedChat} onSend={sendMessage} />
       </div>
     </div>
   );
