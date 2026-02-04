@@ -22,17 +22,36 @@ function App() {
   const selectedChat = chats.find(chat => chat.id === selectedChatId);
 
   const sendMessage = (text) => {
-    setChats(
-      chats.map(chat =>
+  // mensaje del usuario
+  setChats(prevChats =>
+    prevChats.map(chat =>
+      chat.id === selectedChatId
+        ? {
+            ...chat,
+            messages: [...chat.messages, { from: "user", text }],
+          }
+        : chat
+    )
+  );
+
+  // respuesta automática
+  setTimeout(() => {
+    setChats(prevChats =>
+      prevChats.map(chat =>
         chat.id === selectedChatId
           ? {
               ...chat,
-              messages: [...chat.messages, { from: "user", text }],
+              messages: [
+                ...chat.messages,
+                { from: "bot", text: "Estoy pensando..." },
+              ],
             }
           : chat
       )
     );
-  };
+  }, 1000);
+};
+
 
   return (
     <div>
