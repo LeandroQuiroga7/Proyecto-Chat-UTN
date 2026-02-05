@@ -18,17 +18,15 @@ function ChatWindow({ chat, onSend }) {
       <h2>{chat.name}</h2>
 
       <div className="messages">
-        {chat.messages.map((msg, index) => (
-          <div
-            key={index}
-            style={{
-              textAlign: msg.from === "user" ? "right" : "left",
-            }}
-          >
-            {msg.text}
-          </div>
-        ))}
-      </div>
+  {chat.messages.map((msg, index) => (
+    <div
+      key={index}
+      className={`message ${msg.from}`}
+    >
+      {msg.text}
+    </div>
+  ))}
+</div>
 
       <input
         value={text}
