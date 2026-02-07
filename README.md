@@ -1,6 +1,6 @@
 # 💬 Chat Clon
 
-Clon simple de una aplicación de chat estilo, desarrollado con **React** para practicar manejo de estado, componentes y layout con **Flexbox**.
+Clon simple de una aplicación de chat, desarrollado con **React** para practicar manejo de estado, componentes y layout con **Flexbox**.
 
 ---
 
