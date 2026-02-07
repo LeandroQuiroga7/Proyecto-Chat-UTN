@@ -8,12 +8,16 @@ function App() {
     {
       id: 1,
       name: "Chat 1",
+      avatar: "🟢",
+      status: "online",
       messages: [{ from: "bot", text: "Hola 👋" }],
     },
     {
       id: 2,
       name: "Chat 2",
-      messages: [{ from: "bot", text: "¿Cómo estás?" }],
+      avatar: "⚪",
+      status: "offline",
+      messages: [{ from: "bot", text: "Hola mundo" }],
     },
   ]);
 
@@ -55,10 +59,11 @@ function App() {
 
   return (
     <div>
-      <h1>Chat Clon</h1>
+      
       <div className="app">
         <ChatList
           chats={chats}
+          setChats={setChats}
           selectedChatId={selectedChatId}
           onSelectChat={setSelectedChatId}
         />

@@ -18,22 +18,26 @@ function ChatWindow({ chat, onSend }) {
       <h2>{chat.name}</h2>
 
       <div className="messages">
-  {chat.messages.map((msg, index) => (
-    <div
-      key={index}
-      className={`message ${msg.from}`}
-    >
-      {msg.text}
-    </div>
-  ))}
-</div>
+        {chat.messages.map((msg, index) => (
+          <div
+            key={index}
+            className={`message-row ${msg.from}`}   
+          >
+            <div className={`message ${msg.from}`}> 
+              {msg.text}
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <input
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Escribí un mensaje"
-      />
-      <button onClick={handleSend}>Enviar</button>
+      <div className="chat-input">
+        <input
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Escribí un mensaje"
+        />
+        <button onClick={handleSend}>Enviar</button>
+      </div>
     </div>
   );
 }
